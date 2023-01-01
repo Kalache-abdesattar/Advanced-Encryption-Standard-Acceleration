@@ -1,0 +1,16 @@
+Fitter Status : Successful - Sun Jan 01 22:03:26 2023
+Quartus II Version : 9.0 Build 132 02/25/2009 SJ Full Version
+Revision Name : loop_unrolled_ctr
+Top-level Entity Name : loop_unrolled_ctr
+Family : Cyclone II
+Device : EP2C35F672C6
+Timing Models : Final
+Total logic elements : 5,362 / 33,216 ( 16 % )
+    Total combinational functions : 5,266 / 33,216 ( 16 % )
+    Dedicated logic registers : 428 / 33,216 ( 1 % )
+Total registers : 428
+Total pins : 258 / 475 ( 54 % )
+Total virtual pins : 0
+Total memory bits : 0 / 483,840 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 70 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

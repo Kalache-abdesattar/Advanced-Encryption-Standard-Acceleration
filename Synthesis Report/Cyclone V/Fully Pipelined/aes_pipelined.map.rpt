@@ -1,0 +1,892 @@
+Analysis & Synthesis report for aes_pipelined
+Sun Jan 01 20:18:59 2023
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Inverted Register Statistics
+ 10. Port Connectivity Checks: "aes_round:round_10"
+ 11. Port Connectivity Checks: "aes_round:round_9"
+ 12. Port Connectivity Checks: "aes_round:round_8"
+ 13. Port Connectivity Checks: "aes_round:round_7"
+ 14. Port Connectivity Checks: "aes_round:round_6"
+ 15. Port Connectivity Checks: "aes_round:round_5"
+ 16. Port Connectivity Checks: "aes_round:round_4"
+ 17. Port Connectivity Checks: "aes_round:round_3"
+ 18. Port Connectivity Checks: "aes_round:round_2"
+ 19. Port Connectivity Checks: "aes_round:round_1"
+ 20. Port Connectivity Checks: "key_sch:sch_10"
+ 21. Port Connectivity Checks: "key_sch:sch_9"
+ 22. Port Connectivity Checks: "key_sch:sch_8"
+ 23. Port Connectivity Checks: "key_sch:sch_7"
+ 24. Port Connectivity Checks: "key_sch:sch_6"
+ 25. Port Connectivity Checks: "key_sch:sch_5"
+ 26. Port Connectivity Checks: "key_sch:sch_4"
+ 27. Port Connectivity Checks: "key_sch:sch_3"
+ 28. Port Connectivity Checks: "key_sch:sch_2"
+ 29. Port Connectivity Checks: "key_sch:sch_1"
+ 30. Post-Synthesis Netlist Statistics for Top Partition
+ 31. Elapsed Time Per Partition
+ 32. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sun Jan 01 20:18:59 2023       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; aes_pipelined                               ;
+; Top-level Entity Name           ; aes_pipelined                               ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 2816                                        ;
+; Total pins                      ; 260                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSXFC6D6F31C6     ;                    ;
+; Top-level entity name                                                           ; aes_pipelined      ; aes_pipelined      ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.2%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                        ;
++----------------------------------+-----------------+-----------------+------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path ; Library ;
++----------------------------------+-----------------+-----------------+------------------------------+---------+
+; aes_pipelined.vhd                ; yes             ; User VHDL File  ; C:/FPGA/aes_pipelined.vhd    ;         ;
++----------------------------------+-----------------+-----------------+------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 10076     ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 11251     ;
+;     -- 7 input functions                    ; 128       ;
+;     -- 6 input functions                    ; 8757      ;
+;     -- 5 input functions                    ; 561       ;
+;     -- 4 input functions                    ; 402       ;
+;     -- <=3 input functions                  ; 1403      ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 2816      ;
+;                                             ;           ;
+; I/O pins                                    ; 260       ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 2816      ;
+; Total fan-out                               ; 68778     ;
+; Average fan-out                             ; 4.72      ;
++---------------------------------------------+-----------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                           ;
++--------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node           ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                            ; Entity Name   ; Library Name ;
++--------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------+---------------+--------------+
+; |aes_pipelined                       ; 11251 (391)         ; 2816 (256)                ; 0                 ; 0          ; 260  ; 0            ; |aes_pipelined                                                 ; aes_pipelined ; work         ;
+;    |aes_round:round_10|              ; 640 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10                              ; aes_round     ; work         ;
+;       |sbox_lut:\gen_0:0:sbox_inst|  ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:0:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:10:sbox_inst| ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:10:sbox_inst ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:11:sbox_inst| ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:11:sbox_inst ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:12:sbox_inst| ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:12:sbox_inst ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:13:sbox_inst| ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:13:sbox_inst ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:14:sbox_inst| ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:14:sbox_inst ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:15:sbox_inst| ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:15:sbox_inst ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:1:sbox_inst|  ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:1:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:2:sbox_inst|  ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:2:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:3:sbox_inst|  ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:3:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:4:sbox_inst|  ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:4:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:5:sbox_inst|  ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:5:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:6:sbox_inst|  ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:6:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:7:sbox_inst|  ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:7:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:8:sbox_inst|  ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:8:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:9:sbox_inst|  ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_10|sbox_lut:\gen_0:9:sbox_inst  ; sbox_lut      ; work         ;
+;    |aes_round:round_1|               ; 822 (178)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1                               ; aes_round     ; work         ;
+;       |mix_columns:mix|              ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|mix_columns:mix               ; mix_columns   ; work         ;
+;       |sbox_lut:\gen_0:0:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:0:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:10:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:10:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:11:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:11:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:12:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:12:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:13:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:13:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:14:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:14:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:15:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:15:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:1:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:1:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:2:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:2:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:3:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:3:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:4:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:4:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:5:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:5:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:6:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:6:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:7:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:7:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:8:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:8:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:9:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_1|sbox_lut:\gen_0:9:sbox_inst   ; sbox_lut      ; work         ;
+;    |aes_round:round_2|               ; 812 (168)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2                               ; aes_round     ; work         ;
+;       |mix_columns:mix|              ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|mix_columns:mix               ; mix_columns   ; work         ;
+;       |sbox_lut:\gen_0:0:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:0:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:10:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:10:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:11:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:11:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:12:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:12:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:13:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:13:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:14:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:14:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:15:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:15:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:1:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:1:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:2:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:2:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:3:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:3:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:4:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:4:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:5:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:5:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:6:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:6:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:7:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:7:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:8:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:8:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:9:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_2|sbox_lut:\gen_0:9:sbox_inst   ; sbox_lut      ; work         ;
+;    |aes_round:round_3|               ; 816 (172)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3                               ; aes_round     ; work         ;
+;       |mix_columns:mix|              ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|mix_columns:mix               ; mix_columns   ; work         ;
+;       |sbox_lut:\gen_0:0:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:0:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:10:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:10:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:11:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:11:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:12:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:12:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:13:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:13:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:14:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:14:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:15:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:15:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:1:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:1:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:2:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:2:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:3:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:3:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:4:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:4:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:5:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:5:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:6:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:6:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:7:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:7:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:8:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:8:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:9:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_3|sbox_lut:\gen_0:9:sbox_inst   ; sbox_lut      ; work         ;
+;    |aes_round:round_4|               ; 808 (160)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4                               ; aes_round     ; work         ;
+;       |mix_columns:mix|              ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|mix_columns:mix               ; mix_columns   ; work         ;
+;       |sbox_lut:\gen_0:0:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:0:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:10:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:10:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:11:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:11:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:12:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:12:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:13:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:13:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:14:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:14:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:15:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:15:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:1:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:1:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:2:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:2:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:3:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:3:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:4:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:4:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:5:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:5:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:6:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:6:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:7:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:7:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:8:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:8:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:9:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_4|sbox_lut:\gen_0:9:sbox_inst   ; sbox_lut      ; work         ;
+;    |aes_round:round_5|               ; 820 (174)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5                               ; aes_round     ; work         ;
+;       |mix_columns:mix|              ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|mix_columns:mix               ; mix_columns   ; work         ;
+;       |sbox_lut:\gen_0:0:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:0:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:10:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:10:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:11:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:11:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:12:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:12:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:13:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:13:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:14:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:14:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:15:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:15:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:1:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:1:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:2:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:2:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:3:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:3:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:4:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:4:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:5:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:5:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:6:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:6:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:7:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:7:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:8:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:8:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:9:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_5|sbox_lut:\gen_0:9:sbox_inst   ; sbox_lut      ; work         ;
+;    |aes_round:round_6|               ; 816 (171)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6                               ; aes_round     ; work         ;
+;       |mix_columns:mix|              ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|mix_columns:mix               ; mix_columns   ; work         ;
+;       |sbox_lut:\gen_0:0:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:0:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:10:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:10:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:11:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:11:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:12:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:12:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:13:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:13:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:14:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:14:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:15:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:15:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:1:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:1:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:2:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:2:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:3:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:3:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:4:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:4:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:5:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:5:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:6:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:6:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:7:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:7:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:8:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:8:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:9:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_6|sbox_lut:\gen_0:9:sbox_inst   ; sbox_lut      ; work         ;
+;    |aes_round:round_7|               ; 819 (173)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7                               ; aes_round     ; work         ;
+;       |mix_columns:mix|              ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|mix_columns:mix               ; mix_columns   ; work         ;
+;       |sbox_lut:\gen_0:0:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:0:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:10:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:10:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:11:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:11:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:12:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:12:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:13:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:13:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:14:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:14:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:15:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:15:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:1:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:1:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:2:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:2:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:3:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:3:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:4:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:4:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:5:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:5:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:6:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:6:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:7:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:7:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:8:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:8:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:9:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_7|sbox_lut:\gen_0:9:sbox_inst   ; sbox_lut      ; work         ;
+;    |aes_round:round_8|               ; 812 (167)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8                               ; aes_round     ; work         ;
+;       |mix_columns:mix|              ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|mix_columns:mix               ; mix_columns   ; work         ;
+;       |sbox_lut:\gen_0:0:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:0:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:10:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:10:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:11:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:11:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:12:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:12:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:13:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:13:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:14:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:14:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:15:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:15:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:1:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:1:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:2:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:2:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:3:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:3:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:4:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:4:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:5:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:5:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:6:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:6:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:7:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:7:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:8:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:8:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:9:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_8|sbox_lut:\gen_0:9:sbox_inst   ; sbox_lut      ; work         ;
+;    |aes_round:round_9|               ; 815 (170)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9                               ; aes_round     ; work         ;
+;       |mix_columns:mix|              ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|mix_columns:mix               ; mix_columns   ; work         ;
+;       |sbox_lut:\gen_0:0:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:0:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:10:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:10:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:11:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:11:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:12:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:12:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:13:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:13:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:14:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:14:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:15:sbox_inst| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:15:sbox_inst  ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:1:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:1:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:2:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:2:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:3:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:3:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:4:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:4:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:5:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:5:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:6:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:6:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:7:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:7:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:8:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:8:sbox_inst   ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_0:9:sbox_inst|  ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|aes_round:round_9|sbox_lut:\gen_0:9:sbox_inst   ; sbox_lut      ; work         ;
+;    |dataout_reg:reg10|               ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|dataout_reg:reg10                               ; dataout_reg   ; work         ;
+;    |dataout_reg:reg1|                ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|dataout_reg:reg1                                ; dataout_reg   ; work         ;
+;    |dataout_reg:reg2|                ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|dataout_reg:reg2                                ; dataout_reg   ; work         ;
+;    |dataout_reg:reg3|                ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|dataout_reg:reg3                                ; dataout_reg   ; work         ;
+;    |dataout_reg:reg4|                ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|dataout_reg:reg4                                ; dataout_reg   ; work         ;
+;    |dataout_reg:reg5|                ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|dataout_reg:reg5                                ; dataout_reg   ; work         ;
+;    |dataout_reg:reg6|                ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|dataout_reg:reg6                                ; dataout_reg   ; work         ;
+;    |dataout_reg:reg7|                ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|dataout_reg:reg7                                ; dataout_reg   ; work         ;
+;    |dataout_reg:reg8|                ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|dataout_reg:reg8                                ; dataout_reg   ; work         ;
+;    |dataout_reg:reg9|                ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|dataout_reg:reg9                                ; dataout_reg   ; work         ;
+;    |datapath_reg:reg_10|             ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|datapath_reg:reg_10                             ; datapath_reg  ; work         ;
+;    |datapath_reg:reg_1|              ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|datapath_reg:reg_1                              ; datapath_reg  ; work         ;
+;    |datapath_reg:reg_2|              ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|datapath_reg:reg_2                              ; datapath_reg  ; work         ;
+;    |datapath_reg:reg_3|              ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|datapath_reg:reg_3                              ; datapath_reg  ; work         ;
+;    |datapath_reg:reg_4|              ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|datapath_reg:reg_4                              ; datapath_reg  ; work         ;
+;    |datapath_reg:reg_5|              ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|datapath_reg:reg_5                              ; datapath_reg  ; work         ;
+;    |datapath_reg:reg_6|              ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|datapath_reg:reg_6                              ; datapath_reg  ; work         ;
+;    |datapath_reg:reg_7|              ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|datapath_reg:reg_7                              ; datapath_reg  ; work         ;
+;    |datapath_reg:reg_8|              ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|datapath_reg:reg_8                              ; datapath_reg  ; work         ;
+;    |datapath_reg:reg_9|              ; 0 (0)               ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|datapath_reg:reg_9                              ; datapath_reg  ; work         ;
+;    |key_sch:sch_10|                  ; 288 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_10                                  ; key_sch       ; work         ;
+;       |sbox_lut:\gen_00:0:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_10|sbox_lut:\gen_00:0:s             ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:1:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_10|sbox_lut:\gen_00:1:s             ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:2:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_10|sbox_lut:\gen_00:2:s             ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:3:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_10|sbox_lut:\gen_00:3:s             ; sbox_lut      ; work         ;
+;    |key_sch:sch_1|                   ; 288 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_1                                   ; key_sch       ; work         ;
+;       |sbox_lut:\gen_00:0:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_1|sbox_lut:\gen_00:0:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:1:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_1|sbox_lut:\gen_00:1:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:2:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_1|sbox_lut:\gen_00:2:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:3:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_1|sbox_lut:\gen_00:3:s              ; sbox_lut      ; work         ;
+;    |key_sch:sch_2|                   ; 288 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_2                                   ; key_sch       ; work         ;
+;       |sbox_lut:\gen_00:0:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_2|sbox_lut:\gen_00:0:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:1:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_2|sbox_lut:\gen_00:1:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:2:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_2|sbox_lut:\gen_00:2:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:3:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_2|sbox_lut:\gen_00:3:s              ; sbox_lut      ; work         ;
+;    |key_sch:sch_3|                   ; 288 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_3                                   ; key_sch       ; work         ;
+;       |sbox_lut:\gen_00:0:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_3|sbox_lut:\gen_00:0:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:1:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_3|sbox_lut:\gen_00:1:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:2:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_3|sbox_lut:\gen_00:2:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:3:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_3|sbox_lut:\gen_00:3:s              ; sbox_lut      ; work         ;
+;    |key_sch:sch_4|                   ; 288 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_4                                   ; key_sch       ; work         ;
+;       |sbox_lut:\gen_00:0:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_4|sbox_lut:\gen_00:0:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:1:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_4|sbox_lut:\gen_00:1:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:2:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_4|sbox_lut:\gen_00:2:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:3:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_4|sbox_lut:\gen_00:3:s              ; sbox_lut      ; work         ;
+;    |key_sch:sch_5|                   ; 288 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_5                                   ; key_sch       ; work         ;
+;       |sbox_lut:\gen_00:0:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_5|sbox_lut:\gen_00:0:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:1:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_5|sbox_lut:\gen_00:1:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:2:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_5|sbox_lut:\gen_00:2:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:3:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_5|sbox_lut:\gen_00:3:s              ; sbox_lut      ; work         ;
+;    |key_sch:sch_6|                   ; 288 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_6                                   ; key_sch       ; work         ;
+;       |sbox_lut:\gen_00:0:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_6|sbox_lut:\gen_00:0:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:1:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_6|sbox_lut:\gen_00:1:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:2:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_6|sbox_lut:\gen_00:2:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:3:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_6|sbox_lut:\gen_00:3:s              ; sbox_lut      ; work         ;
+;    |key_sch:sch_7|                   ; 288 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_7                                   ; key_sch       ; work         ;
+;       |sbox_lut:\gen_00:0:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_7|sbox_lut:\gen_00:0:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:1:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_7|sbox_lut:\gen_00:1:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:2:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_7|sbox_lut:\gen_00:2:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:3:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_7|sbox_lut:\gen_00:3:s              ; sbox_lut      ; work         ;
+;    |key_sch:sch_8|                   ; 288 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_8                                   ; key_sch       ; work         ;
+;       |sbox_lut:\gen_00:0:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_8|sbox_lut:\gen_00:0:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:1:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_8|sbox_lut:\gen_00:1:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:2:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_8|sbox_lut:\gen_00:2:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:3:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_8|sbox_lut:\gen_00:3:s              ; sbox_lut      ; work         ;
+;    |key_sch:sch_9|                   ; 288 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_9                                   ; key_sch       ; work         ;
+;       |sbox_lut:\gen_00:0:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_9|sbox_lut:\gen_00:0:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:1:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_9|sbox_lut:\gen_00:1:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:2:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_9|sbox_lut:\gen_00:2:s              ; sbox_lut      ; work         ;
+;       |sbox_lut:\gen_00:3:s|         ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aes_pipelined|key_sch:sch_9|sbox_lut:\gen_00:3:s              ; sbox_lut      ; work         ;
++--------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 2816  ;
+; Number of registers using Synchronous Clear  ; 32    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1536  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; nonce[41]                               ; 1       ;
+; nonce[46]                               ; 1       ;
+; nonce[45]                               ; 1       ;
+; nonce[44]                               ; 1       ;
+; nonce[43]                               ; 1       ;
+; nonce[40]                               ; 1       ;
+; nonce[47]                               ; 1       ;
+; nonce[42]                               ; 1       ;
+; nonce[7]                                ; 1       ;
+; nonce[6]                                ; 1       ;
+; nonce[5]                                ; 1       ;
+; nonce[4]                                ; 1       ;
+; nonce[1]                                ; 1       ;
+; nonce[2]                                ; 1       ;
+; nonce[3]                                ; 1       ;
+; nonce[0]                                ; 1       ;
+; nonce[81]                               ; 1       ;
+; nonce[86]                               ; 1       ;
+; nonce[85]                               ; 1       ;
+; nonce[84]                               ; 1       ;
+; nonce[83]                               ; 1       ;
+; nonce[80]                               ; 1       ;
+; nonce[87]                               ; 1       ;
+; nonce[82]                               ; 1       ;
+; nonce[57]                               ; 1       ;
+; nonce[62]                               ; 1       ;
+; nonce[61]                               ; 1       ;
+; nonce[60]                               ; 1       ;
+; nonce[59]                               ; 1       ;
+; nonce[56]                               ; 1       ;
+; nonce[63]                               ; 1       ;
+; nonce[58]                               ; 1       ;
+; nonce[23]                               ; 1       ;
+; nonce[22]                               ; 1       ;
+; nonce[21]                               ; 1       ;
+; nonce[20]                               ; 1       ;
+; nonce[17]                               ; 1       ;
+; nonce[18]                               ; 1       ;
+; nonce[19]                               ; 1       ;
+; nonce[16]                               ; 1       ;
+; nonce[65]                               ; 1       ;
+; nonce[70]                               ; 1       ;
+; nonce[69]                               ; 1       ;
+; nonce[68]                               ; 1       ;
+; nonce[67]                               ; 1       ;
+; nonce[64]                               ; 1       ;
+; nonce[71]                               ; 1       ;
+; nonce[66]                               ; 1       ;
+; nonce[95]                               ; 1       ;
+; nonce[94]                               ; 1       ;
+; nonce[93]                               ; 1       ;
+; nonce[92]                               ; 1       ;
+; nonce[89]                               ; 1       ;
+; nonce[90]                               ; 1       ;
+; nonce[91]                               ; 1       ;
+; nonce[88]                               ; 1       ;
+; nonce[55]                               ; 1       ;
+; nonce[54]                               ; 1       ;
+; nonce[53]                               ; 1       ;
+; nonce[52]                               ; 1       ;
+; nonce[49]                               ; 1       ;
+; nonce[50]                               ; 1       ;
+; nonce[51]                               ; 1       ;
+; nonce[48]                               ; 1       ;
+; nonce[9]                                ; 1       ;
+; nonce[14]                               ; 1       ;
+; nonce[13]                               ; 1       ;
+; nonce[12]                               ; 1       ;
+; nonce[11]                               ; 1       ;
+; nonce[8]                                ; 1       ;
+; nonce[15]                               ; 1       ;
+; nonce[10]                               ; 1       ;
+; nonce[79]                               ; 1       ;
+; nonce[78]                               ; 1       ;
+; nonce[77]                               ; 1       ;
+; nonce[76]                               ; 1       ;
+; nonce[73]                               ; 1       ;
+; nonce[74]                               ; 1       ;
+; nonce[75]                               ; 1       ;
+; nonce[72]                               ; 1       ;
+; nonce[39]                               ; 1       ;
+; nonce[38]                               ; 1       ;
+; nonce[37]                               ; 1       ;
+; nonce[36]                               ; 1       ;
+; nonce[33]                               ; 1       ;
+; nonce[34]                               ; 1       ;
+; nonce[35]                               ; 1       ;
+; nonce[32]                               ; 1       ;
+; nonce[25]                               ; 1       ;
+; nonce[30]                               ; 1       ;
+; nonce[29]                               ; 1       ;
+; nonce[28]                               ; 1       ;
+; nonce[27]                               ; 1       ;
+; nonce[24]                               ; 1       ;
+; nonce[31]                               ; 1       ;
+; nonce[26]                               ; 1       ;
+; Total number of inverted registers = 96 ;         ;
++-----------------------------------------+---------+
+
+
++------------------------------------------------+
+; Port Connectivity Checks: "aes_round:round_10" ;
++------------+-------+----------+----------------+
+; Port       ; Type  ; Severity ; Details        ;
++------------+-------+----------+----------------+
+; last_round ; Input ; Info     ; Stuck at VCC   ;
++------------+-------+----------+----------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "aes_round:round_9" ;
++------------+-------+----------+---------------+
+; Port       ; Type  ; Severity ; Details       ;
++------------+-------+----------+---------------+
+; last_round ; Input ; Info     ; Stuck at GND  ;
++------------+-------+----------+---------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "aes_round:round_8" ;
++------------+-------+----------+---------------+
+; Port       ; Type  ; Severity ; Details       ;
++------------+-------+----------+---------------+
+; last_round ; Input ; Info     ; Stuck at GND  ;
++------------+-------+----------+---------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "aes_round:round_7" ;
++------------+-------+----------+---------------+
+; Port       ; Type  ; Severity ; Details       ;
++------------+-------+----------+---------------+
+; last_round ; Input ; Info     ; Stuck at GND  ;
++------------+-------+----------+---------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "aes_round:round_6" ;
++------------+-------+----------+---------------+
+; Port       ; Type  ; Severity ; Details       ;
++------------+-------+----------+---------------+
+; last_round ; Input ; Info     ; Stuck at GND  ;
++------------+-------+----------+---------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "aes_round:round_5" ;
++------------+-------+----------+---------------+
+; Port       ; Type  ; Severity ; Details       ;
++------------+-------+----------+---------------+
+; last_round ; Input ; Info     ; Stuck at GND  ;
++------------+-------+----------+---------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "aes_round:round_4" ;
++------------+-------+----------+---------------+
+; Port       ; Type  ; Severity ; Details       ;
++------------+-------+----------+---------------+
+; last_round ; Input ; Info     ; Stuck at GND  ;
++------------+-------+----------+---------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "aes_round:round_3" ;
++------------+-------+----------+---------------+
+; Port       ; Type  ; Severity ; Details       ;
++------------+-------+----------+---------------+
+; last_round ; Input ; Info     ; Stuck at GND  ;
++------------+-------+----------+---------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "aes_round:round_2" ;
++------------+-------+----------+---------------+
+; Port       ; Type  ; Severity ; Details       ;
++------------+-------+----------+---------------+
+; last_round ; Input ; Info     ; Stuck at GND  ;
++------------+-------+----------+---------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "aes_round:round_1" ;
++------------+-------+----------+---------------+
+; Port       ; Type  ; Severity ; Details       ;
++------------+-------+----------+---------------+
+; last_round ; Input ; Info     ; Stuck at GND  ;
++------------+-------+----------+---------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "key_sch:sch_10"           ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; round_const[2..3]  ; Input ; Info     ; Stuck at VCC ;
+; round_const[5..6]  ; Input ; Info     ; Stuck at VCC ;
+; round_const[0..1]  ; Input ; Info     ; Stuck at GND ;
+; round_const[7..31] ; Input ; Info     ; Stuck at GND ;
+; round_const[4]     ; Input ; Info     ; Stuck at GND ;
++--------------------+-------+----------+--------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "key_sch:sch_9"            ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; round_const[3..4]  ; Input ; Info     ; Stuck at VCC ;
+; round_const[6..7]  ; Input ; Info     ; Stuck at VCC ;
+; round_const[0..2]  ; Input ; Info     ; Stuck at GND ;
+; round_const[8..31] ; Input ; Info     ; Stuck at GND ;
+; round_const[5]     ; Input ; Info     ; Stuck at GND ;
++--------------------+-------+----------+--------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "key_sch:sch_8"            ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; round_const[1..31] ; Input ; Info     ; Stuck at GND ;
+; round_const[0]     ; Input ; Info     ; Stuck at VCC ;
++--------------------+-------+----------+--------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "key_sch:sch_7"            ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; round_const[2..31] ; Input ; Info     ; Stuck at GND ;
+; round_const[0]     ; Input ; Info     ; Stuck at GND ;
+; round_const[1]     ; Input ; Info     ; Stuck at VCC ;
++--------------------+-------+----------+--------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "key_sch:sch_6"            ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; round_const[0..1]  ; Input ; Info     ; Stuck at GND ;
+; round_const[3..31] ; Input ; Info     ; Stuck at GND ;
+; round_const[2]     ; Input ; Info     ; Stuck at VCC ;
++--------------------+-------+----------+--------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "key_sch:sch_5"            ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; round_const[0..2]  ; Input ; Info     ; Stuck at GND ;
+; round_const[4..31] ; Input ; Info     ; Stuck at GND ;
+; round_const[3]     ; Input ; Info     ; Stuck at VCC ;
++--------------------+-------+----------+--------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "key_sch:sch_4"            ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; round_const[0..3]  ; Input ; Info     ; Stuck at GND ;
+; round_const[5..31] ; Input ; Info     ; Stuck at GND ;
+; round_const[4]     ; Input ; Info     ; Stuck at VCC ;
++--------------------+-------+----------+--------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "key_sch:sch_3"            ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; round_const[0..5]  ; Input ; Info     ; Stuck at GND ;
+; round_const[7..31] ; Input ; Info     ; Stuck at GND ;
+; round_const[6]     ; Input ; Info     ; Stuck at VCC ;
++--------------------+-------+----------+--------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "key_sch:sch_2"            ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; round_const[0..5]  ; Input ; Info     ; Stuck at GND ;
+; round_const[7..31] ; Input ; Info     ; Stuck at GND ;
+; round_const[6]     ; Input ; Info     ; Stuck at VCC ;
++--------------------+-------+----------+--------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "key_sch:sch_1"            ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; round_const[0..6]  ; Input ; Info     ; Stuck at GND ;
+; round_const[8..31] ; Input ; Info     ; Stuck at GND ;
+; round_const[7]     ; Input ; Info     ; Stuck at VCC ;
++--------------------+-------+----------+--------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 2816                        ;
+;     ENA               ; 1504                        ;
+;     ENA SCLR          ; 32                          ;
+;     plain             ; 1280                        ;
+; arriav_io_obuf        ; 128                         ;
+; arriav_lcell_comb     ; 11251                       ;
+;     arith             ; 32                          ;
+;         1 data inputs ; 32                          ;
+;     extend            ; 128                         ;
+;         7 data inputs ; 128                         ;
+;     normal            ; 11091                       ;
+;         1 data inputs ; 96                          ;
+;         2 data inputs ; 773                         ;
+;         3 data inputs ; 502                         ;
+;         4 data inputs ; 402                         ;
+;         5 data inputs ; 561                         ;
+;         6 data inputs ; 8757                        ;
+; boundary_port         ; 260                         ;
+;                       ;                             ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 3.21                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:17     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Sun Jan 01 20:18:21 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off aes_pipelined -c aes_pipelined
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 14 design units, including 7 entities, in source file aes_pipelined.vhd
+    Info (12022): Found design unit 1: sbox_lut-arc File: C:/FPGA/aes_pipelined.vhd Line: 16
+    Info (12022): Found design unit 2: mix_columns-arc File: C:/FPGA/aes_pipelined.vhd Line: 298
+    Info (12022): Found design unit 3: aes_round-beh File: C:/FPGA/aes_pipelined.vhd Line: 375
+    Info (12022): Found design unit 4: key_sch-arc File: C:/FPGA/aes_pipelined.vhd Line: 434
+    Info (12022): Found design unit 5: datapath_reg-arc File: C:/FPGA/aes_pipelined.vhd Line: 476
+    Info (12022): Found design unit 6: dataout_reg-arc File: C:/FPGA/aes_pipelined.vhd Line: 508
+    Info (12022): Found design unit 7: aes_pipelined-arc File: C:/FPGA/aes_pipelined.vhd Line: 553
+    Info (12023): Found entity 1: sbox_lut File: C:/FPGA/aes_pipelined.vhd Line: 8
+    Info (12023): Found entity 2: mix_columns File: C:/FPGA/aes_pipelined.vhd Line: 290
+    Info (12023): Found entity 3: aes_round File: C:/FPGA/aes_pipelined.vhd Line: 365
+    Info (12023): Found entity 4: key_sch File: C:/FPGA/aes_pipelined.vhd Line: 425
+    Info (12023): Found entity 5: datapath_reg File: C:/FPGA/aes_pipelined.vhd Line: 469
+    Info (12023): Found entity 6: dataout_reg File: C:/FPGA/aes_pipelined.vhd Line: 500
+    Info (12023): Found entity 7: aes_pipelined File: C:/FPGA/aes_pipelined.vhd Line: 544
+Info (12127): Elaborating entity "aes_pipelined" for the top level hierarchy
+Info (12128): Elaborating entity "key_sch" for hierarchy "key_sch:sch_1" File: C:/FPGA/aes_pipelined.vhd Line: 640
+Info (12128): Elaborating entity "sbox_lut" for hierarchy "key_sch:sch_1|sbox_lut:\gen_00:0:s" File: C:/FPGA/aes_pipelined.vhd Line: 447
+Info (12128): Elaborating entity "datapath_reg" for hierarchy "datapath_reg:reg_1" File: C:/FPGA/aes_pipelined.vhd Line: 641
+Info (12128): Elaborating entity "aes_round" for hierarchy "aes_round:round_1" File: C:/FPGA/aes_pipelined.vhd Line: 677
+Info (12128): Elaborating entity "mix_columns" for hierarchy "aes_round:round_1|mix_columns:mix" File: C:/FPGA/aes_pipelined.vhd Line: 395
+Info (12128): Elaborating entity "dataout_reg" for hierarchy "dataout_reg:reg1" File: C:/FPGA/aes_pipelined.vhd Line: 678
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 11639 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 132 input pins
+    Info (21059): Implemented 128 output pins
+    Info (21061): Implemented 11379 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4940 megabytes
+    Info: Processing ended: Sun Jan 01 20:18:59 2023
+    Info: Elapsed time: 00:00:38
+    Info: Total CPU time (on all processors): 00:00:53
+
+
