@@ -5,7 +5,7 @@ RTL Description of Accelerated 128bits AES Algorithm implemented on Field Progra
 
 This is is my first foray in the world of FPGA/SoC hardware acceleration. 
 
-**Learning Outcomes :
+**Learning Outcomes :**
 * Loop Unrolling
 * High-throughput Design Techniques : Pipelining and Register Balancing
 * Writing Basic Testbenches
